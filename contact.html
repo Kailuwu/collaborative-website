@@ -6,48 +6,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Page-specific styles for contact.html (keeps style.css conflict-free) */
+        .page.contact-page {
+            max-width: 1040px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(32px, 5vw, 64px);
+            align-items: start;
+        }
+
+        .details {
+            margin-top: 32px;
+            border-top: 1px solid var(--line);
+        }
+
+        .detail {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        .detail strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+            padding: clamp(24px, 4vw, 36px);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 15px;
+            transition: border-color 160ms ease;
+        }
+
+        .field textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        button.button {
+            width: 100%;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        @media (max-width: 850px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <main class="contact-card">
-        <section class="contact-info">
-            <h1>Contact Us</h1>
-            <p>Have a question or want to work together? Send us a message and we’ll get back to you soon.</p>
+    <!-- Copy the exact <nav> from index.html so the brand name matches across all pages -->
+    <nav>
+        <a class="brand" href="index.html">Studio<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+    </nav>
 
-            <div class="details">
-                <div class="detail">
-                    <strong>Email</strong>
-                    hello@example.com
+    <main class="page contact-page">
+        <div class="contact-grid">
+            <section class="contact-info">
+                <p class="eyebrow">Get in touch</p>
+                <h1>Contact <em>Us.</em></h1>
+                <p>Have a question or want to work together? Send us a message and we’ll get back to you soon.</p>
+
+                <div class="details">
+                    <div class="detail">
+                        <strong>Email</strong>
+                        hello@example.com
+                    </div>
+                    <div class="detail">
+                        <strong>Phone</strong>
+                        +1 (555) 123-4567
+                    </div>
+                    <div class="detail">
+                        <strong>Address</strong>
+                        123 Main Street, City, Country
+                    </div>
                 </div>
-                <div class="detail">
-                    <strong>Phone</strong>
-                    +1 (555) 123-4567
+            </section>
+
+            <form class="contact-form">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" placeholder="Your name" required>
                 </div>
-                <div class="detail">
-                    <strong>Address</strong>
-                    123 Main Street, City, Country
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
                 </div>
-            </div>
-        </section>
 
-        <form>
-            <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your name" required>
-            </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+                </div>
 
-            <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" required>
-            </div>
-
-            <div class="field">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-            </div>
-
-            <button type="submit">Send Message</button>
-        </form>
+                <button type="submit" class="button">Send Message</button>
+            </form>
+        </div>
     </main>
 </body>
 

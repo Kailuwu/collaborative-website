@@ -5,21 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Collaborative Website</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .team-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .team-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .team-list strong {
+      color: var(--accent);
+    }
+  </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="index.html" class="brand">collab<span>.</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="contact.html" class="button">Contact Us</a>
+    </div>
   </nav>
-  <div class="container">
-    <h1>About Us</h1>
+
+  <main class="page">
+    <p class="eyebrow">Who we are</p>
+    <h1>About <em>Us</em></h1>
     <p>Welcome to our collaborative project! We are a team of students learning Git, GitHub branching, and web development.</p>
+
     <h2>Our Team</h2>
-    <ul>
-      <li><strong>Home Page:</strong> Kailuwu</li>
-      <li><strong>About Us Page:</strong> retrospect123</li>
-      <li><strong>Contact Us Page:</strong> Syncoski</li>
+    <ul class="team-list">
+      <li><span>Home Page</span> <strong>Kailuwu</strong></li>
+      <li><span>About Us Page</span> <strong>retrospect123</strong></li>
+      <li><span>Contact Us Page</span> <strong>Syncoski</strong></li>
     </ul>
-  </div>
+  </main>
 </body>
 </html>

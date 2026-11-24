@@ -9,7 +9,6 @@
 </head>
 <body>
   <!-- ===== NAVIGATION ===== -->
-  <!-- No contenteditable on any link: editable links won't navigate when clicked -->
   <nav>
     <a class="brand" href="index.html">CSCC 21.1<span>.</span></a>
     <div class="nav-links">
@@ -21,12 +20,11 @@
   <main class="hero">
     <section>
       <!-- Plain text can stay editable; only links need it removed -->
-      <p class="eyebrow" contenteditable="true">Independent creative studio</p>
-      <h1 contenteditable="true">Hi baby <em>IAN.</em></h1>
-      <p class="intro" contenteditable="true">A collaborative website made by Dirk Edulsa, Mikhail Jaffar, Peter Madronero</p>
+      <p class="eyebrow"=>Independent creative studio</p>
+      <h1>Hi baby <em>IAN.</em></h1>
+      <p class="intro">A collaborative website made by Dirk Edulsa, Mikhail Jaffar, Peter Madronero</p>
 
       <div class="hero-actions">
-        <!-- contenteditable removed from both links so they navigate properly -->
         <a class="button" href="about.html">View our work</a>
         <a class="text-link" href="contact.html">Meet the studio →</a>
       </div>
@@ -35,8 +33,7 @@
     <section class="visual" aria-label="Creative artwork">
       <div class="shape"></div>
       <div class="card"></div>
-      <!-- A badge is not a link, so contenteditable is fine here -->
-      <div class="badge" contenteditable="true">CREATIVE<br />DIRECTION</div>
+      <div class="badge">CREATIVE<br />DIRECTION</div>
     </section>
   </main>
 </body>

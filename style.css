@@ -1,0 +1,223 @@
+/* ============================================================
+   style.css — shared by index.html, about.html, contact.html
+   Only ONE person (the owner) should edit this file, to avoid
+   merge conflicts. Teammates: put page-only tweaks in a <style>
+   tag inside your own page instead.
+   ============================================================ */
+
+/* ---------- Design tokens (change colors here, everywhere updates) ---------- */
+:root {
+  --ink: #1a1a18;                    /* main text color */
+  --paper: #f7f5ef;                  /* page background */
+  --accent: #ff5c35;                 /* highlight color */
+  --line: rgba(26, 26, 24, 0.14);    /* thin divider lines */
+  --muted: #6d6c66;                  /* softer secondary text */
+}
+
+/* ---------- Basic reset ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ---------- Navigation bar (identical on every page) ---------- */
+nav {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 5vw, 72px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.brand span { color: var(--accent); }
+
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* NEW: highlights the link of the page you are currently on */
+.nav-links a.active { color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 180ms ease, background 180ms ease;
+}
+/* FIX: ".nav-links a" above would turn the nav button's text dark
+   (dark on dark). This rule forces it back to white. */
+.nav-links a.button { color: white; }
+.button:hover {
+  transform: translateY(-2px);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Homepage hero section ---------- */
+.hero {
+  min-height: calc(100vh - 86px);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 90px);
+  padding: 64px clamp(24px, 5vw, 72px);
+  overflow: hidden;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 800;
+}
+.eyebrow::before { content: ""; width: 38px; height: 2px; background: var(--accent); }
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(58px, 7vw, 112px);
+  line-height: 0.91;
+  letter-spacing: -0.075em;
+}
+h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }
+
+.intro {
+  max-width: 520px;
+  margin: 32px 0 36px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 20px; }
+.text-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 8px 2px;
+}
+
+/* ---------- Hero artwork ---------- */
+.visual {
+  position: relative;
+  min-height: 590px;
+  display: grid;
+  place-items: center;
+}
+.shape {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 0.82;
+  border-radius: 48% 48% 20% 20% / 38% 38% 12% 12%;
+  background: var(--accent);
+  transform: rotate(4deg);
+}
+.card {
+  position: relative;
+  width: 74%;
+  aspect-ratio: 0.82;
+  overflow: hidden;
+  border: 10px solid var(--paper);
+  border-radius: 50% 50% 18px 18px / 38% 38% 18px 18px;
+  background: #ddd7ca;
+  box-shadow: 0 24px 60px rgba(26, 26, 24, 0.12);
+  transform: rotate(-4deg);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 52% 34%, #f1e0cb 0 9%, transparent 9.5%),
+    linear-gradient(145deg, transparent 55%, #d0b58c 56%),
+    linear-gradient(45deg, #aaa78e 0 34%, #d9d2c2 34% 70%, #b3b09e 70%);
+}
+.badge {
+  position: absolute;
+  right: -3%;
+  bottom: 11%;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  transform: rotate(8deg);
+}
+
+/* ---------- NEW: generic layout for inner pages (about, contact) ---------- */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px clamp(24px, 5vw, 72px);
+}
+.page h1 { font-size: clamp(40px, 6vw, 72px); }
+.page p  { color: var(--muted); line-height: 1.7; font-size: 18px; }
+
+/* ---------- Editing hint (only affects contenteditable text) ---------- */
+[contenteditable="true"]:focus {
+  outline: 2px dashed var(--accent);
+  outline-offset: 5px;
+}
+
+/* ---------- Responsive: tablets ---------- */
+@media (max-width: 850px) {
+  nav { height: 74px; }
+  .nav-links a:not(.button) { display: none; }  /* hides text links on small screens */
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 56px; }
+  h1 { font-size: clamp(54px, 16vw, 82px); }
+  .visual { min-height: 480px; }
+  .shape { width: 68%; }
+  .card { width: 64%; }
+}
+
+/* ---------- Responsive: phones ---------- */
+@media (max-width: 480px) {
+  nav { padding-inline: 20px; }
+  .nav-links { gap: 10px; }
+  .nav-links .button { min-height: 42px; padding-inline: 16px; }
+  .hero { padding-inline: 20px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .visual { min-height: 380px; }
+  .shape { width: 82%; }
+  .card { width: 76%; }
+  .badge { width: 92px; height: 92px; right: 0; }
+  }
